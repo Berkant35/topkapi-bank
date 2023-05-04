@@ -1,16 +1,13 @@
-# topkapi_bank
+Topkapı Bank
+Bu, Topkapı Bank için bir bankacılık uygulamasıdır. Bu uygulama ile müşteriler, banka hesaplarını yönetebilir, para transferleri yapabilir ve fatura ödemelerini gerçekleştirebilirler.
 
-This app created for banking system
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Özellikler
+Kullanıcılar, hesaplarını görüntüleyebilir, para yatırabilir ve çekebilirler.
+Kullanıcılar, diğer Topkapı Bank müşterilerine para transferi yapabilirler.
+Kullanıcılar, fatura ödemelerini uygulama üzerinden gerçekleştirebilirler.
+Kullanıcılar, hesap hareketlerini görüntüleyebilirler.
+Uygulama, güvenli bir şekilde kullanıcı bilgilerini saklar.
+Kullanılan Teknolojiler
+Backend: Node.js, Express.js, MongoDB
+Frontend: React, Redux
+Diğer Teknolojiler: JWT, bcrypt
