@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:topkapi_bank/main.dart';
 
 part 'auth_service.dart';
 
@@ -8,7 +9,7 @@ abstract class AuthManager {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   Future<User?> createUserWithEmailAndPassword(
-      String email, String password);
+      String email, String password,String userName);
 
   Future<dynamic> currentUser();
 

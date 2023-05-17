@@ -51,7 +51,7 @@ class _RowFormFieldState extends State<RowFormField> {
         ),
         CustomFormField(
           authEditingFormController: widget.editingController,
-          validateFunction: widget.custValidateFunction ?? (val) => val!.isNotEmpty ? null : "",
+          validateFunction: widget.custValidateFunction ?? (val) => val!.isNotEmpty ? null : "Boş bırakılamaz",
           visibleStatus: widget.visibleStatus,
           inputType: widget.inputType,
           maxLines: widget.maxLines,

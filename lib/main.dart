@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:topkapi_bank/ui/auth/register_page.dart';
@@ -14,7 +15,7 @@ var logger = Logger(
 var loggerNoStack = Logger(
   printer: PrettyPrinter(methodCount: 0),
 );
-void main() => runApp(const TopkapiBankSystem());
+void main() => runApp(const ProviderScope(child: TopkapiBankSystem()));
 
 class TopkapiBankSystem extends StatelessWidget {
   const TopkapiBankSystem({super.key});

@@ -6,7 +6,7 @@ import 'package:topkapi_bank/line/view_models/app/loading_manager.dart';
 import 'package:topkapi_bank/line/view_models/auth/auth_view_model.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
 
-final currentRecordStateManager =
+final currentLoadingManager =
 StateNotifierProvider<LoadingStateManagerNotifier, LoadingStates>(
         (ref) {
       return LoadingStateManagerNotifier(LoadingStates.idle);
@@ -14,7 +14,7 @@ StateNotifierProvider<LoadingStateManagerNotifier, LoadingStates>(
 
 
 //You can handle all authentication bussiniess logics
-final authManager =
+final currentBankUser =
 StateNotifierProvider<CurrentBankUserNotifier, BankUser?>((ref) {
   return CurrentBankUserNotifier(null);
 });

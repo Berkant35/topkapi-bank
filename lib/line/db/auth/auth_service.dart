@@ -3,12 +3,13 @@ part of 'auth_manager.dart';
 class AuthService extends AuthManager {
 
   @override
-  Future<User?> createUserWithEmailAndPassword(String email, String password) async {
+  Future<User?> createUserWithEmailAndPassword(String email, String password,String userName) async {
     try{
       await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
     }catch(e){
-
+      logger.e("Firebase Exception ${e.toString()}");
     }
+    return null;
   }
 
   @override
