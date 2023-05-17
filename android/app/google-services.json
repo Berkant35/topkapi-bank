@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "38875609579",
+    "project_id": "topkapibank-e2882",
+    "storage_bucket": "topkapibank-e2882.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38875609579:android:b2968bed64b78746e141ae",
+        "android_client_info": {
+          "package_name": "com.topkapibank.topkapi_bank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38875609579-09cjguqc43tlpq5ht3mhve715ne0iius.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaGOFiM6Cqt0x6wRMlRqgNou85a3aDOO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38875609579-09cjguqc43tlpq5ht3mhve715ne0iius.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

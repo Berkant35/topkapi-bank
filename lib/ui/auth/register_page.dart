@@ -96,6 +96,7 @@ class RegisterFormBody extends ConsumerWidget {
                             }
                           }
                         : null,
+                    //şifre: topkapibank1234
                     inButtonText: 'Hesap Oluştur',
                     primaryColor: Colors.white10,
                     inButtonTextStyle: ThemeValueExtension.subtitle
@@ -112,7 +113,7 @@ class RegisterFormBody extends ConsumerWidget {
               height: 4.h,
             ),
             Center(
-                child: Text("© TopkapiBank",
+                child: Text("© Topkapi Bank",
                     style: ThemeValueExtension.subtitle2
                         .copyWith(color: CustomColors.primaryColor)))
           ],

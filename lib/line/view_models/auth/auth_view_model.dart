@@ -8,14 +8,14 @@ import 'package:topkapi_bank/models/auth/bank_user.dart';
 
 class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
   CurrentBankUserNotifier(BankUser? bankUser) : super(null);
-  //final _authService = AuthService();
+  final _authService = AuthService();
 
 
   Future<bool> createUserWithEmailAndPassword(String email, String password,String userName,WidgetRef ref) async {
     try{
       ref.read(currentLoadingManager.notifier).changeState(LoadingStates.loading);
-      //await _authService.createUserWithEmailAndPassword(email, password,userName);
-      await Future.delayed(const Duration(seconds: 2));
+      await _authService.createUserWithEmailAndPassword(email, password,userName);
+
       ref.read(currentLoadingManager.notifier).changeState(LoadingStates.idle);
       return true;
     }catch(e){
