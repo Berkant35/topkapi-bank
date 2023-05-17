@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:topkapi_bank/ui/auth/register_page.dart';
 import 'package:topkapi_bank/ui/onboard/landing_page.dart';
 import 'package:topkapi_bank/utilities/init/navigation/navigation_route.dart';
 import 'package:topkapi_bank/utilities/init/navigation/navigation_service.dart';
 import 'package:topkapi_bank/utilities/init/theme/custom_colors.dart';
 
+var logger = Logger(
+  printer: PrettyPrinter(),
+);
+
+var loggerNoStack = Logger(
+  printer: PrettyPrinter(methodCount: 0),
+);
 void main() => runApp(const TopkapiBankSystem());
 
 class TopkapiBankSystem extends StatelessWidget {
@@ -26,7 +35,7 @@ class TopkapiBankSystem extends StatelessWidget {
             ),
             scaffoldBackgroundColor: Colors.white
         ),
-        home: const LandingPage(),
+        home: const RegisterPage(),
       );
     });
   }

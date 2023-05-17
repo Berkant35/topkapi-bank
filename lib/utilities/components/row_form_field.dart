@@ -14,7 +14,7 @@ class RowFormField extends StatefulWidget {
   final int? maxLines;
   final int? maxLength;
   final TextAlign? textAlign;
-  final String? Function(String? value) custValidateFunction;
+  final String? Function(String? value)? custValidateFunction;
   final String? Function(String? value)? customOnChanged;
 
   const RowFormField(
@@ -51,7 +51,7 @@ class _RowFormFieldState extends State<RowFormField> {
         ),
         CustomFormField(
           authEditingFormController: widget.editingController,
-          validateFunction: widget.custValidateFunction,
+          validateFunction: widget.custValidateFunction ?? (val) => val!.isNotEmpty ? null : "",
           visibleStatus: widget.visibleStatus,
           inputType: widget.inputType,
           maxLines: widget.maxLines,

@@ -5,9 +5,9 @@ import '../constants/extension/context_extensions.dart';
 
 
 class CustomElevatedButton extends StatelessWidget {
-  final MaterialStateProperty<OutlinedBorder?>? outBorder;
-  final MaterialStateProperty<Color?>? primaryColor;
-  final MaterialStateProperty<Color?>? shadowColor;
+  final OutlinedBorder? outBorder;
+  final Color? primaryColor;
+  final Color? shadowColor;
   final Color? onPrimaryColor;
   final Color? borderColor;
   final Color? gradienFirstColor;
@@ -17,7 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
   final TextStyle? inButtonTextStyle;
   final double? width;
   final double? borderRadius;
-  final MaterialStateProperty<double?>? elevation;
+  final double? elevation;
   final double? height;
   final Function? onPressed;
   final Widget? inButtonWidget;
@@ -50,9 +50,9 @@ class CustomElevatedButton extends StatelessWidget {
       width: width ?? 90.w,
       height: height ?? 7.5.h,
       child: ElevatedButton(
-        style: ButtonStyle(
+        style: ElevatedButton.styleFrom(
           backgroundColor: primaryColor,
-          elevation: elevation ?? MaterialStateProperty.all(0),
+          elevation: elevation ?? 0,
           shape: outBorder,
           shadowColor: shadowColor,
         ),

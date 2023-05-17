@@ -59,7 +59,7 @@ extension BoxDecorationExtension on BoxDecorationExtensions {
         return BoxDecoration(
             borderRadius: BorderGeometryExtension
                 .lowToNormalEdge.borderRadiusGeometryValue,
-            color: CustomColors.customCardBackgroundColor,
+            color: CustomColors.backgroundColor,
             border: Border.all(color: CustomColors.customGreyColor,width: 0.85));
       case BoxDecorationExtensions.imageBoxDecoration:
         return BoxDecoration(
