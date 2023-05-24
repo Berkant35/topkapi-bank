@@ -5,7 +5,16 @@ class ApplicationConstants {
   static const hintName = "Adı";
   static const firebaseNotificationBaseUrl =
       "https://fcm.googleapis.com/fcm/send";
-
+  static const appName = "Topkapi Bank";
 }
 
+class HomePageStrings {
+  static const cards = "Kartlar";
+  static const transactions = "İşlemler";
+}
 
+class MenuStrings {
+  static const mainPage = "Anasayfa";
+  static const payments = "Ödemeler";
+  static const menu = "Menü";
+}
