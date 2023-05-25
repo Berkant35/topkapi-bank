@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=2.19.2 <=3.0.1'
 
 
 dependencies:
@@ -17,8 +17,11 @@ dependencies:
   ntp: ^2.0.0
   intl: ^0.17.0
 
+  #credit card ui
+  u_credit_card: ^1.0.3
 
-
+  #slider
+  flutter_carousel_slider: ^1.1.0
 
   #cached_network_image:
   cached_network_image: ^3.2.3

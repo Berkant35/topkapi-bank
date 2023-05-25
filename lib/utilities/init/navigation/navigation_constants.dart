@@ -1,6 +1,4 @@
-
-
-class NavigationConstants{
+class NavigationConstants {
   static const loginPage = '/LoginPage';
   static const adminBasePage = '/AdminPage';
   static const chooseRolePage = '/ChooseRole';
