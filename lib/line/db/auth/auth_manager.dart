@@ -1,28 +1,34 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:topkapi_bank/main.dart';
+import 'package:topkapi_bank/models/auth/bank_user.dart';
+import 'package:topkapi_bank/utilities/constants/exceptions/firebase_exceptions.dart';
+
+import '../firestore/fb_db_manager.dart';
 
 part 'auth_service.dart';
 
 abstract class AuthManager {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final dbbManager = FirebaseDbManager();
 
-  Future<User?> createUserWithEmailAndPassword(
-      String email, String password,String userName);
+  Future<BankUser?> createUserWithEmailAndPassword(
+      WidgetRef ref,String email, String password,String userName);
 
   Future<dynamic> currentUser();
 
   Future<bool> signOut();
 
-  Future<dynamic> signIn(String email, String password);
+  Future<dynamic> signIn(WidgetRef ref,String email, String password);
 
-  Future<void> forgotPassword(String email);
+  Future<void> forgotPassword(WidgetRef ref,String email);
 
-  Future<void> updatePassword(String currentPassword,String newPassword);
+  Future<void> updatePassword(WidgetRef ref,String currentPassword,String newPassword);
 
 
-  Future<bool> updateEmail(String email,String password);
+  Future<bool> updateEmail(WidgetRef ref,String email,String password);
 
-  Future<bool> deleteUser(String rootUserID);
+  Future<bool> deleteUser(WidgetRef ref,String rootUserID);
 }

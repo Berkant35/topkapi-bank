@@ -11,7 +11,7 @@ abstract class FirebaseDbBase {
 
   Future<dynamic> readUser(String userID);
 
-  Future<bool> saveUser();
+  Future<bool> saveUser(BankUser bankUser);
 
 
 }

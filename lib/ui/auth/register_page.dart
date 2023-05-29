@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:topkapi_bank/line/view_models/app/loading_manager.dart';
+import 'package:topkapi_bank/line/view_models/auth/base_auth_control.dart';
 import 'package:topkapi_bank/line/view_models/global_providers.dart';
 
 import 'package:topkapi_bank/ui/auth/customs/complex_inherited.dart';
@@ -11,26 +12,6 @@ import 'package:topkapi_bank/utilities/components/custom_elevated_button.dart';
 import 'package:topkapi_bank/utilities/components/row_form_field.dart';
 import 'package:topkapi_bank/utilities/constants/extension/context_extensions.dart';
 import 'package:topkapi_bank/utilities/init/theme/custom_colors.dart';
-
-class RegisterPage extends ConsumerStatefulWidget {
-  const RegisterPage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  ConsumerState createState() => _RegisterPageState();
-}
-
-class _RegisterPageState extends ConsumerState<RegisterPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: BackTypeOne(
-        contentWidget: ComplexInherited(child: const RegisterFormBody()),
-      ),
-    );
-  }
-}
 
 class RegisterFormBody extends ConsumerWidget {
   const RegisterFormBody({
@@ -46,9 +27,19 @@ class RegisterFormBody extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hesap Oluştur",
-                style: ThemeValueExtension.headline6
-                    .copyWith(color: CustomColors.primaryColor)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Hesap Oluştur",
+                    style: ThemeValueExtension.headline6
+                        .copyWith(color: CustomColors.primaryColor)),
+                IconButton(
+                    onPressed: () => ref
+                        .read(currentBaseAuth.notifier)
+                        .changeState(BaseAuthPageType.login),
+                    icon: const Icon(Icons.cancel_outlined))
+              ],
+            ),
             SizedBox(
               height: 2.h,
             ),
@@ -83,16 +74,17 @@ class RegisterFormBody extends ConsumerWidget {
                               ref
                                   .read(currentBankUser.notifier)
                                   .createUserWithEmailAndPassword(
-                                      ComplexInherited.of(context)
-                                          .emailController
-                                          .text,
-                                      ComplexInherited.of(context)
-                                          .passwordController
-                                          .text,
-                                      ComplexInherited.of(context)
-                                          .userNameController
-                                          .text,
-                                      ref);
+                                    ref,
+                                    ComplexInherited.of(context)
+                                        .emailController
+                                        .text,
+                                    ComplexInherited.of(context)
+                                        .passwordController
+                                        .text,
+                                    ComplexInherited.of(context)
+                                        .userNameController
+                                        .text,
+                                  );
                             }
                           }
                         : null,

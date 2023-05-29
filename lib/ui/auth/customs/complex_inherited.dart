@@ -11,8 +11,11 @@ class ComplexInherited extends InheritedWidget {
 
   final TextEditingController emailController = TextEditingController(text: "berkantC93@gmail.com");
   final TextEditingController userNameController = TextEditingController(text: "Berkant");
+  final TextEditingController loginEmailController = TextEditingController(text: "berkantC93@gmail.com");
+  final TextEditingController loginPasswordController = TextEditingController(text: "12345678");
   final TextEditingController passwordController = TextEditingController(text: "12345678");
   final formKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
 
   static ComplexInherited of(BuildContext context) {
     final ComplexInherited? result = context.dependOnInheritedWidgetOfExactType<ComplexInherited>();

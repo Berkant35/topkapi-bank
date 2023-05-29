@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
 
   NavigationBar _navigationBar() {
     return NavigationBar(
-      indicatorColor: Colors.black,
+
       selectedIndex: selectedPageIndex,
       onDestinationSelected: (int index) {
         setState(() {
