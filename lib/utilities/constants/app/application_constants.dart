@@ -11,6 +11,7 @@ class ApplicationConstants {
 class HomePageStrings {
   static const cards = "Kartlar";
   static const transactions = "İşlemler";
+  static const expenses = "Masraflar";
 }
 
 class MenuStrings {

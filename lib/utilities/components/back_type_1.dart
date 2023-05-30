@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -10,10 +8,7 @@ import '../init/theme/custom_colors.dart';
 
 class BackTypeOne extends ConsumerWidget {
   final Widget contentWidget;
-  const BackTypeOne({
-    Key? key,
-    required this.contentWidget
-  }) : super(key: key);
+  const BackTypeOne({Key? key, required this.contentWidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,10 +20,14 @@ class BackTypeOne extends ConsumerWidget {
           height: 100.h,
           child: Column(
             children: [
-              SizedBox(height: 10.h,),
-              Text("Topkapı Bank",style: ThemeValueExtension.headline6.copyWith(
-                  color: CustomColors.backgroundColor
-              ),),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                "Topkapı Bank",
+                style: ThemeValueExtension.headline6
+                    .copyWith(color: CustomColors.backgroundColor),
+              ),
             ],
           ),
         ),
