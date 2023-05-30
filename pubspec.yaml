@@ -20,6 +20,9 @@ dependencies:
   #credit card ui
   u_credit_card: ^1.0.3
 
+  #charts
+  circular_chart_flutter: ^0.0.2
+
   #slider
   flutter_carousel_slider: ^1.1.0
 

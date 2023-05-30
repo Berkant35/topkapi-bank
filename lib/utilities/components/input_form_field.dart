@@ -108,9 +108,9 @@ class _CustomFormFieldState extends State<CustomFormField> {
                             : Icons.visibility_off),
                       )
                     : null,
-            hintStyle: widget.hintStyle ?? ThemeValueExtension.subtitle.copyWith(
-              color: CustomColors.customGreyColor
-            ),
+            hintStyle: widget.hintStyle ??
+                ThemeValueExtension.subtitle
+                    .copyWith(color: CustomColors.customGreyColor),
             contentPadding: EdgeInsets.symmetric(
                 vertical: context.normalValue, horizontal: context.lowValue)),
       ),

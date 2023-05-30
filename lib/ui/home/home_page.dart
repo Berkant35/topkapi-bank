@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:topkapi_bank/utilities/components/back_type_2.dart';
+import 'package:topkapi_bank/utilities/components/main_navigation_bar.dart';
 import 'package:topkapi_bank/utilities/constants/app/application_constants.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: _navigationBar(),
+        
         body: BackTypeTwo(
             contentWidget: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,35 +54,6 @@ class _HomePageState extends State<HomePage> {
             _transactions(),
           ],
         )));
-  }
-
-  NavigationBar _navigationBar() {
-    return NavigationBar(
-      indicatorColor: Colors.black,
-      selectedIndex: selectedPageIndex,
-      onDestinationSelected: (int index) {
-        setState(() {
-          selectedPageIndex = index;
-        });
-      },
-      destinations: const <NavigationDestination>[
-        NavigationDestination(
-          selectedIcon: Icon(Icons.home),
-          icon: Icon(Icons.home_outlined),
-          label: MenuStrings.mainPage,
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(Icons.payment),
-          icon: Icon(Icons.payment_outlined),
-          label: MenuStrings.payments,
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(Icons.menu),
-          icon: Icon(Icons.menu_outlined),
-          label: MenuStrings.menu,
-        ),
-      ],
-    );
   }
 
   SizedBox _transactions() {

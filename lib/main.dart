@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:topkapi_bank/ui/home/home_page.dart';
+import 'package:topkapi_bank/ui/navigation_page.dart';
+import 'package:topkapi_bank/ui/payments_page.dart';
 import 'package:topkapi_bank/utilities/constants/app/application_constants.dart';
 import 'package:topkapi_bank/utilities/init/navigation/navigation_route.dart';
 import 'package:topkapi_bank/utilities/init/navigation/navigation_service.dart';
@@ -45,7 +46,7 @@ class TopkapiBankSystem extends StatelessWidget {
             appBarTheme:
                 const AppBarTheme(backgroundColor: CustomColors.primaryColor),
             scaffoldBackgroundColor: Colors.white),
-        home: const HomePage(),
+        home: const CustomNavigationBarX(),
       );
     });
   }
