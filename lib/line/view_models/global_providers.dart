@@ -5,6 +5,9 @@ import 'package:topkapi_bank/line/view_models/auth/base_auth_control.dart';
 import 'package:topkapi_bank/line/view_models/payment/payment_manager.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
 
+import 'app/tab_bar_manager.dart';
+import 'credit_card/credit_card_manager.dart';
+
 final currentLoadingManager =
     StateNotifierProvider<LoadingStateManagerNotifier, LoadingStates>((ref) {
   return LoadingStateManagerNotifier(LoadingStates.idle);
@@ -24,4 +27,14 @@ final currentBaseAuth =
 final currentPaymentWorks =
     StateNotifierProvider<PaymentProviderNotifier, void>((ref) {
   return PaymentProviderNotifier(null);
+});
+//CreditCardManagerNotifier
+final currentCreditCardWorks =
+StateNotifierProvider<CreditCardManagerNotifier, bool>((ref) {
+  return CreditCardManagerNotifier(false);
+});
+
+final currentSendMoneyTabManagerIndex =
+StateNotifierProvider<TabManagerIndexControlNotifier, int>((ref) {
+  return TabManagerIndexControlNotifier(0);
 });

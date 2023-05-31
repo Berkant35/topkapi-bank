@@ -34,8 +34,8 @@ class _DialogMenuState extends ConsumerState<DialogMenu> {
             ),
           ),
           perMenuItem("Fatura Ödeme", NavigationConstants.payBillPage,Icons.payment),
-          perMenuItem("Kart Ekle", NavigationConstants.payBillPage,Icons.credit_card),
-
+          perMenuItem("Kart Ekle", NavigationConstants.addCreditCardPage,Icons.add),
+          perMenuItem("Para Gönder", NavigationConstants.transferMoneyPage,Icons.send),
         ],
       ),
     );

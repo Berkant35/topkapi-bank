@@ -6,6 +6,7 @@ import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/payment_model.dart';
 import 'package:topkapi_bank/utilities/components/custom_elevated_button.dart';
 import 'package:topkapi_bank/utilities/constants/extension/context_extensions.dart';
+import 'package:topkapi_bank/utilities/constants/extension/widget_extension.dart';
 
 import '../../../line/view_models/app/loading_manager.dart';
 import '../../../line/view_models/global_providers.dart';
@@ -26,14 +27,7 @@ class _PayBillPageState extends ConsumerState<PayBillPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leadingWidth: 4.w,
-        centerTitle: false,
-        title: Text("Fatura Ödeme",
-            style: ThemeValueExtension.headline6
-                .copyWith(color: CustomColors.primaryColor)),
-      ),
+      appBar: CustomAppBars.typeBackOneAppBar("Fatura Ödeme"),
       body: ComplexInherited(child: const BuildForm()),
     );
   }

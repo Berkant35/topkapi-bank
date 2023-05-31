@@ -7,9 +7,19 @@ class AuthService extends AuthManager {
     try {
       UserCredential credential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
+
+      final ibanNo = customAlphabet('0123456789', 24);
+
+      logger.i("Iban No: $ibanNo");
+
       final createBankUser = BankUser(
-          userId: credential.user!.uid, userName: userName, email: email);
+          userId: credential.user!.uid,
+          userName: userName,
+          email: email,
+          iban: 'TR$ibanNo');
+
       final result = await dbbManager.saveUser(createBankUser);
+
       return result ? createBankUser : null;
     } catch (e) {
       logger.e("Firebase Exception ${e.toString()}");
@@ -58,9 +68,14 @@ class AuthService extends AuthManager {
   }
 
   @override
-  Future<bool> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<bool> signOut(WidgetRef ref) async {
+    try {
+      await _firebaseAuth.signOut();
+      return true;
+    } catch (e) {
+      FirebaseExceptions.handleFirebaseException(e.toString(), ref);
+      return false;
+    }
   }
 
   @override

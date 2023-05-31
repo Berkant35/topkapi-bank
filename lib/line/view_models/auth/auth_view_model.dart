@@ -5,6 +5,7 @@ import 'package:topkapi_bank/line/view_models/app/loading_manager.dart';
 import 'package:topkapi_bank/line/view_models/global_providers.dart';
 import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
+import 'package:topkapi_bank/utilities/components/dialogs/custom_dialogs.dart';
 import 'package:topkapi_bank/utilities/init/navigation/navigation_service.dart';
 
 import '../../../utilities/init/navigation/navigation_constants.dart';
@@ -14,13 +15,18 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
   final _authService = AuthService();
 
   Future<bool> createUserWithEmailAndPassword(
-      WidgetRef ref,String email, String password, String userName) async {
+      WidgetRef ref, String email, String password, String userName) async {
     try {
       ref
           .read(currentLoadingManager.notifier)
           .changeState(LoadingStates.loading);
-      await _authService.createUserWithEmailAndPassword(ref,
-          email, password, userName);
+      final currentUser = await _authService.createUserWithEmailAndPassword(
+          ref, email, password, userName);
+
+      if (currentUser != null) {
+        CustomDialogs.successTitleAndOk(ref, "", "Başarılı",
+            "Kaydınız oluşturuldu. Giriş sağlayabilirsiniz.");
+      }
 
       ref.read(currentLoadingManager.notifier).changeState(LoadingStates.idle);
       return true;
@@ -49,7 +55,7 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
       ref
           .read(currentLoadingManager.notifier)
           .changeState(LoadingStates.loading);
-      state = await _authService.signIn(ref,email, password);
+      state = await _authService.signIn(ref, email, password);
       ref.read(currentLoadingManager.notifier).changeState(LoadingStates.idle);
       if (state != null) {
         NavigationService.instance
@@ -62,17 +68,28 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
     }
   }
 
-  Future<bool> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<bool> signOut(
+    WidgetRef ref,
+  ) async {
+    try {
+      if (await _authService.signOut(ref)) {
+        NavigationService.instance
+            .navigateToPage(path: NavigationConstants.baseAuthPage);
+      }
+      return true;
+    } catch (e) {
+      logger.e("Error Message ${e.toString()}");
+      return false;
+    }
   }
 
-  Future<bool> updateEmail(WidgetRef ref,String email, String password) {
+  Future<bool> updateEmail(WidgetRef ref, String email, String password) {
     // TODO: implement updateEmail
     throw UnimplementedError();
   }
 
-  Future<void> updatePassword(WidgetRef ref,String currentPassword, String newPassword) {
+  Future<void> updatePassword(
+      WidgetRef ref, String currentPassword, String newPassword) {
     // TODO: implement updatePassword
     throw UnimplementedError();
   }

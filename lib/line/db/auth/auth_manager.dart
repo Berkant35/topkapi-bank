@@ -1,7 +1,10 @@
 
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nanoid/nanoid.dart';
 import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
 import 'package:topkapi_bank/utilities/constants/exceptions/firebase_exceptions.dart';
@@ -19,7 +22,7 @@ abstract class AuthManager {
 
   Future<dynamic> currentUser();
 
-  Future<bool> signOut();
+  Future<bool> signOut(WidgetRef ref);
 
   Future<dynamic> signIn(WidgetRef ref,String email, String password);
 

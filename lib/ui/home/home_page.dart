@@ -3,14 +3,17 @@ import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:topkapi_bank/line/view_models/global_providers.dart';
+import 'package:topkapi_bank/models/card/credit_card.dart';
 import 'package:topkapi_bank/models/payment_model.dart';
 import 'package:topkapi_bank/utilities/components/back_type_2.dart';
 import 'package:topkapi_bank/utilities/constants/app/application_constants.dart';
+import 'package:topkapi_bank/utilities/init/navigation/navigation_service.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
-import '../../models/credit_card_model.dart';
-import '../../models/transactions_model.dart';
+
 import '../../utilities/constants/extension/context_extensions.dart';
+import '../../utilities/init/navigation/navigation_constants.dart';
+import '../../utilities/init/theme/custom_colors.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({
@@ -23,21 +26,6 @@ class HomePage extends ConsumerStatefulWidget {
 
 class _HomePageState extends ConsumerState<HomePage> {
   final GlobalKey<State> _sliderKey = GlobalKey();
-
-
-
-  List<CreditCardWidget> creditCards = [
-    CreditCardWidget(
-        cardNumber: '5434567890123456',
-        cardHolderName: "Mucahit",
-        cvv: "3213",
-        expiryDate: "213213"),
-    CreditCardWidget(
-        cardNumber: '1234567890123456',
-        cardHolderName: "Yusuf",
-        cvv: "4324",
-        expiryDate: "213213"),
-  ];
 
   var selectedPageIndex = 0;
 
@@ -67,7 +55,8 @@ class _HomePageState extends ConsumerState<HomePage> {
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             List<PaymentModel?>? listOfPayment = snapshot.data;
 
-            return snapshot.connectionState == ConnectionState.done && listOfPayment != null
+            return snapshot.connectionState == ConnectionState.done &&
+                    listOfPayment != null
                 ? ListView.builder(
                     itemCount: listOfPayment.length,
                     itemBuilder: (BuildContext context, index) {
@@ -117,21 +106,48 @@ class _HomePageState extends ConsumerState<HomePage> {
   SizedBox _cardUI() {
     return SizedBox(
       height: 27.h,
-      child: CarouselSlider.builder(
-          slideIndicator: CircularSlideIndicator(),
-          key: _sliderKey,
-          viewportFraction: 0.9,
-          slideBuilder: (index) {
-            return Padding(
-              padding: EdgeInsets.only(right: 4.w, bottom: 3.h),
-              child: CreditCardUi(
-                cardHolderFullName: creditCards[index].cardHolderName,
-                cardNumber: creditCards[index].cardNumber,
-                validThru: creditCards[index].expiryDate,
-              ),
-            );
-          },
-          itemCount: creditCards.length),
+      child: FutureBuilder<List<CreditCard?>>(
+        future: ref
+            .read(currentCreditCardWorks.notifier)
+            .getCardList(ref, ref.read(currentBankUser)!.userId!),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          List<CreditCard?>? creditCards = snapshot.data;
+
+          return snapshot.connectionState == ConnectionState.done
+              ?  creditCards != null &&  creditCards.isNotEmpty
+                  ? CarouselSlider.builder(
+                      slideIndicator: CircularSlideIndicator(),
+                      key: _sliderKey,
+                      viewportFraction: 0.9,
+                      slideBuilder: (index) {
+                        return Padding(
+                          padding: EdgeInsets.only(right: 4.w, bottom: 3.h),
+                          child: CreditCardUi(
+                            cardHolderFullName:
+                                creditCards[index]!.creditCardHolderName!,
+                            cardNumber: creditCards[index]!.cardNumber!,
+                            validThru: creditCards[index]!.validateDate!,
+                          ),
+                        );
+                      },
+                      itemCount: creditCards.length)
+                  : Center(
+                      child: IconButton(
+                        onPressed: () => NavigationService.instance
+                            .navigateToPage(
+                                path: NavigationConstants.addCreditCardPage),
+                        icon: Icon(
+                          Icons.add_circle_outline,
+                          size: 4.h,
+                          color: CustomColors.cardColorTypeThree,
+                        ),
+                      ),
+                    )
+              : const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                );
+        },
+      ),
     );
   }
 

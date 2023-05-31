@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
+import 'package:topkapi_bank/models/card/credit_card.dart';
 import 'package:topkapi_bank/models/payment_model.dart';
 
 part 'fb_db_base.dart';
@@ -46,6 +47,43 @@ class FirebaseDbManager extends FirebaseDbBase {
     } catch (e) {
       logger.e("Payment Failed: ${e.toString()}");
       return false;
+    }
+  }
+
+  Future<bool> createCreditCard(CreditCard creditCard) async {
+    try {
+      await dbBase
+          .collection("cards")
+          .doc(creditCard.creditCardId)
+          .set(creditCard.toJson());
+      return true;
+    } catch (e) {
+      logger.e("createCreditCard Failed: ${e.toString()}");
+      return false;
+    }
+  }
+
+  Future<List<CreditCard?>> getCards(String userId) async {
+    try {
+      List<CreditCard?> cards = [];
+
+      final documents = await dbBase
+          .collection("cards")
+          .where('userId', isEqualTo: userId)
+          .get();
+
+      for (var perDoc in documents.docs) {
+        final card = CreditCard.fromJson(perDoc.data());
+        logger.i("Per Payment:${card.toJson()}");
+        cards.add(card);
+      }
+
+      cards.sort((a, b) => b!.createdAt!.compareTo(a!.createdAt!));
+
+      return cards;
+    } catch (e) {
+      logger.e("Payment Failed: ${e.toString()}");
+      return [];
     }
   }
 
