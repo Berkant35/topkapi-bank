@@ -786,8 +786,6 @@ PODS:
   - PromisesObjC (2.2.0)
   - search_choices (0.0.1):
     - Flutter
-  - share_plus (0.0.1):
-    - Flutter
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
@@ -804,7 +802,6 @@ DEPENDENCIES:
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
   - search_choices (from `.symlinks/plugins/search_choices/ios`)
-  - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
 SPEC REPOS:
@@ -856,8 +853,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
   search_choices:
     :path: ".symlinks/plugins/search_choices/ios"
-  share_plus:
-    :path: ".symlinks/plugins/share_plus/ios"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
 
@@ -896,7 +891,6 @@ SPEC CHECKSUMS:
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   search_choices: b50731e8c425078048f681f39c34375c58d6ce8d
-  share_plus: 599aa54e4ea31d4b4c0e9c911bcc26c55e791028
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3

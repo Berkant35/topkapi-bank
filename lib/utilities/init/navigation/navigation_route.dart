@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:topkapi_bank/ui/auth/base_auth.dart';
 import 'package:topkapi_bank/ui/auth/register_page.dart';
 import 'package:topkapi_bank/ui/home/home_page.dart';
+import 'package:topkapi_bank/ui/payments_page.dart';
 
 import '../../../ui/help/not_found.dart';
+import '../../../ui/home/payments/pay_bill_page.dart';
 import 'navigation_constants.dart';
 
 class NavigationRoute {
@@ -19,6 +21,8 @@ class NavigationRoute {
         return normalNavigate(const BaseAuth());
       case NavigationConstants.homePage:
         return normalNavigate(const HomePage());
+      case NavigationConstants.payBillPage:
+        return normalNavigate(const PayBillPage());
       default:
         return MaterialPageRoute(
           builder: (context) => const NotFound(),

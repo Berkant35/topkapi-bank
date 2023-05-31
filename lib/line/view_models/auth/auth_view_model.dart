@@ -30,9 +30,8 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
     }
   }
 
-  Future currentUser(WidgetRef ref) {
-    // TODO: implement currentUser
-    throw UnimplementedError();
+  Future<void> currentUser(WidgetRef ref) async {
+    state = await _authService.currentUser();
   }
 
   Future<bool> deleteUser(String rootUserID) {

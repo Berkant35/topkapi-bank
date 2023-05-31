@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:topkapi_bank/line/view_models/global_providers.dart';
+import 'package:topkapi_bank/models/payment_model.dart';
 import 'package:topkapi_bank/utilities/components/back_type_2.dart';
-import 'package:topkapi_bank/utilities/components/main_navigation_bar.dart';
 import 'package:topkapi_bank/utilities/constants/app/application_constants.dart';
 import 'package:u_credit_card/u_credit_card.dart';
 
@@ -10,20 +12,19 @@ import '../../models/credit_card_model.dart';
 import '../../models/transactions_model.dart';
 import '../../utilities/constants/extension/context_extensions.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomePage extends ConsumerStatefulWidget {
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   final GlobalKey<State> _sliderKey = GlobalKey();
 
-  List<TransactionModel> transactions = [
-    TransactionModel("assets/image/apple_logo.png", "Apple", 7999.99),
-    TransactionModel("assets/image/netflix_logo.jpeg", "Netflix", 139.49),
-    TransactionModel("assets/image/steam_logo.png", "Steam", 499.80),
-  ];
+
 
   List<CreditCardWidget> creditCards = [
     CreditCardWidget(
@@ -43,80 +44,64 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         body: BackTypeTwo(
             contentWidget: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _cardsText(context),
-            _cardUI(),
-            _transactionsText(context),
-            _transactions(),
-          ],
-        )));
-  }
-
-  NavigationBar _navigationBar() {
-    return NavigationBar(
-
-      selectedIndex: selectedPageIndex,
-      onDestinationSelected: (int index) {
-        setState(() {
-          selectedPageIndex = index;
-        });
-      },
-      destinations: const <NavigationDestination>[
-        NavigationDestination(
-          selectedIcon: Icon(Icons.home),
-          icon: Icon(Icons.home_outlined),
-          label: MenuStrings.mainPage,
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(Icons.payment),
-          icon: Icon(Icons.payment_outlined),
-          label: MenuStrings.payments,
-        ),
-        NavigationDestination(
-          selectedIcon: Icon(Icons.menu),
-          icon: Icon(Icons.menu_outlined),
-          label: MenuStrings.menu,
-        ),
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _cardsText(context),
+        _cardUI(),
+        _transactionsText(context),
+        _transactions(),
       ],
-    );
+    )));
   }
 
   SizedBox _transactions() {
     return SizedBox(
-      height: 32.h,
-      width: 90.h,
-      child: ListView.builder(
-          itemCount: transactions.length,
-          itemBuilder: (BuildContext context, index) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: 4.w, left: 4.w, right: 4.w),
-              child: ListTile(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                leading: CircleAvatar(
-                  backgroundImage: AssetImage(transactions[index].imagePath),
-                  radius: 25,
-                  backgroundColor: Colors.transparent,
-                ),
-                title: Padding(
-                  padding: EdgeInsets.only(left: 5.h),
-                  child: Text(
-                    transactions[index].name,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ),
-                trailing: Text(
-                  "${transactions[index].price} TL",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-              ),
-            );
-          }),
-    );
+        height: 32.h,
+        width: 90.h,
+        child: FutureBuilder<List<PaymentModel?>>(
+          future: ref
+              .read(currentPaymentWorks.notifier)
+              .getPaymentList(ref, ref.read(currentBankUser)!.userId!),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            List<PaymentModel?>? listOfPayment = snapshot.data;
+
+            return snapshot.connectionState == ConnectionState.done && listOfPayment != null
+                ? ListView.builder(
+                    itemCount: listOfPayment.length,
+                    itemBuilder: (BuildContext context, index) {
+                      return Padding(
+                        padding:
+                            EdgeInsets.only(bottom: 4.w, left: 4.w, right: 4.w),
+                        child: ListTile(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          leading: CircleAvatar(
+                            backgroundImage: AssetImage(
+                                "assets/image/${listOfPayment[index]!.typeOfPayment!.toLowerCase()}_logo.png"),
+                            radius: 25,
+                            backgroundColor: Colors.transparent,
+                          ),
+                          title: Padding(
+                            padding: EdgeInsets.only(left: 5.h),
+                            child: Text(
+                              listOfPayment[index]!.typeOfPayment!,
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                          ),
+                          trailing: Text(
+                            "${listOfPayment[index]!.amount} TL",
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                        ),
+                      );
+                    })
+                : const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  );
+          },
+        ));
   }
 
   Padding _cardsText(BuildContext context) {
@@ -138,7 +123,7 @@ class _HomePageState extends State<HomePage> {
           viewportFraction: 0.9,
           slideBuilder: (index) {
             return Padding(
-              padding: const EdgeInsets.only(right: 8.0, bottom: 30),
+              padding: EdgeInsets.only(right: 4.w, bottom: 3.h),
               child: CreditCardUi(
                 cardHolderFullName: creditCards[index].cardHolderName,
                 cardNumber: creditCards[index].cardNumber,

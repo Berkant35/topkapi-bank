@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:topkapi_bank/utilities/components/menu/dialog_menu.dart';
 import 'package:topkapi_bank/utilities/constants/app/application_constants.dart';
+
+import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
+    as slideDialog;
 
 import '../constants/extension/context_extensions.dart';
 import '../constants/extension/edge_extension.dart';
@@ -9,6 +13,7 @@ import '../init/theme/custom_colors.dart';
 
 class BackTypeTwo extends ConsumerWidget {
   final Widget contentWidget;
+
   const BackTypeTwo({Key? key, required this.contentWidget}) : super(key: key);
 
   @override
@@ -24,10 +29,37 @@ class BackTypeTwo extends ConsumerWidget {
               SizedBox(
                 height: 6.h,
               ),
-              Text(
-                ApplicationConstants.appName,
-                style: ThemeValueExtension.headline6
-                    .copyWith(color: CustomColors.backgroundColor),
+              Center(
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: 100.w,
+                        child: Center(
+                          child: Text(
+                            ApplicationConstants.appName,
+                            style: ThemeValueExtension.headline6
+                                .copyWith(color: CustomColors.backgroundColor),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                          onPressed: () => _showDialog(context),
+                          icon: Padding(
+                            padding: EdgeInsets.only(right: 2.w),
+                            child: Icon(
+                              Icons.add_circle_outline,
+                              color: Colors.white,
+                              size: 3.h,
+                            ),
+                          )),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
@@ -48,6 +80,16 @@ class BackTypeTwo extends ConsumerWidget {
           ),
         )
       ],
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    slideDialog.showSlideDialog(
+      context: context,
+      child: const DialogMenu(),
+      barrierColor: Colors.white.withOpacity(0.7),
+      pillColor: CustomColors.primaryColor,
+      backgroundColor: Colors.white,
     );
   }
 }

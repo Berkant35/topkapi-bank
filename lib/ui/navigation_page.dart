@@ -22,7 +22,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBarX> {
     ];
     return Scaffold(
       bottomNavigationBar: NavigationBar(
-        indicatorColor: Colors.black,
+        //indicatorColor: Colors.black,
         selectedIndex: selectedPageIndex,
         onDestinationSelected: (int index) {
           setState(() {
@@ -50,7 +50,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBarX> {
       body: [
         const HomePage(),
         const PaymentsPage(),
-        const RegisterPage()
+        const SizedBox()
       ][selectedPageIndex],
     );
   }

@@ -3,7 +3,7 @@ part of 'auth_manager.dart';
 class AuthService extends AuthManager {
   @override
   Future<BankUser?> createUserWithEmailAndPassword(
-      WidgetRef ref,String email, String password, String userName) async {
+      WidgetRef ref, String email, String password, String userName) async {
     try {
       UserCredential credential = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -18,25 +18,33 @@ class AuthService extends AuthManager {
   }
 
   @override
-  Future currentUser() {
-    // TODO: implement currentUser
-    throw UnimplementedError();
+  Future<BankUser?> currentUser() async {
+    try {
+      User? currentUser = _firebaseAuth.currentUser;
+      if (currentUser != null) {
+        return await dbbManager.readUser(currentUser.uid);
+      }
+      return null;
+    } catch (e) {
+      logger.e("Firebase Exception ${e.toString()}");
+    }
+    return null;
   }
 
   @override
-  Future<bool> deleteUser(WidgetRef ref,String rootUserID) {
+  Future<bool> deleteUser(WidgetRef ref, String rootUserID) {
     // TODO: implement deleteUser
     throw UnimplementedError();
   }
 
   @override
-  Future<void> forgotPassword(WidgetRef ref,String email) {
+  Future<void> forgotPassword(WidgetRef ref, String email) {
     // TODO: implement forgotPassword
     throw UnimplementedError();
   }
 
   @override
-  Future<BankUser?> signIn(WidgetRef ref,String email, String password) async {
+  Future<BankUser?> signIn(WidgetRef ref, String email, String password) async {
     try {
       UserCredential credential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
@@ -56,13 +64,14 @@ class AuthService extends AuthManager {
   }
 
   @override
-  Future<bool> updateEmail(WidgetRef ref,String email, String password) {
+  Future<bool> updateEmail(WidgetRef ref, String email, String password) {
     // TODO: implement updateEmail
     throw UnimplementedError();
   }
 
   @override
-  Future<void> updatePassword(WidgetRef ref,String currentPassword, String newPassword) {
+  Future<void> updatePassword(
+      WidgetRef ref, String currentPassword, String newPassword) {
     // TODO: implement updatePassword
     throw UnimplementedError();
   }

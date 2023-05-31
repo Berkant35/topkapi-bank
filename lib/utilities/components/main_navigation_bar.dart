@@ -20,7 +20,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
       const HomePage(),
     ];
     return NavigationBar(
-      indicatorColor: Colors.black,
+      //indicatorColor: Colors.black,
       selectedIndex: selectedPageIndex,
       onDestinationSelected: (int index) {
         setState(() {

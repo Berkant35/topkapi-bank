@@ -13,5 +13,6 @@ abstract class FirebaseDbBase {
 
   Future<bool> saveUser(BankUser bankUser);
 
+  Future<bool> billPayment(String userId,PaymentModel? paymentModel);
 
 }
