@@ -10,15 +10,27 @@ class AuthService extends AuthManager {
 
       final ibanNo = customAlphabet('0123456789', 24);
 
-      logger.i("Iban No: $ibanNo");
+      final qrLink = await _storageBase.createQRLink(ibanNo);
 
       final createBankUser = BankUser(
           userId: credential.user!.uid,
           userName: userName,
           email: email,
-          iban: 'TR$ibanNo');
+          iban: 'TR$ibanNo',
+          balance: 0.0,
+          createdAt: DateTime.now().toString().substring(0,16),
+          age: 18,
+          qrLink: qrLink,
+          gender: true,
+          surName: userName,
+          updatedAt: DateTime.now().toString().substring(0,16)
+      );
 
       final result = await dbbManager.saveUser(createBankUser);
+
+
+
+
 
       return result ? createBankUser : null;
     } catch (e) {

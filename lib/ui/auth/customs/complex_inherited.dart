@@ -17,11 +17,21 @@ class ComplexInherited extends InheritedWidget{
   final TextEditingController passwordController = TextEditingController(text: "12345678");
   final TextEditingController paymentAmountController = TextEditingController();
   final TextEditingController creditCardHolderNameController = TextEditingController();
+  final TextEditingController ibanNumberController = TextEditingController();
+  final TextEditingController sendIbanNumberController = TextEditingController();
+  final TextEditingController sendIbanExplainController = TextEditingController();
+  final TextEditingController sendMoneyWithIbanAmountController = TextEditingController();
+  final TextEditingController sendMoneyQrAmountController = TextEditingController();
+  final TextEditingController sendQrExplainController = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   final loginFormKey = GlobalKey<FormState>();
   final doPayBillFormKey = GlobalKey<FormState>();
   final addCreditCardFormKey = GlobalKey<FormState>();
+  final ibanFormKey = GlobalKey<FormState>();
+  final qrSendMoneyForm = GlobalKey<FormState>();
+
+
 
 
   static ComplexInherited of(BuildContext context) {

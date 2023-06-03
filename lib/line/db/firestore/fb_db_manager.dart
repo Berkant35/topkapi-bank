@@ -3,10 +3,11 @@ import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
 import 'package:topkapi_bank/models/card/credit_card.dart';
 import 'package:topkapi_bank/models/payment_model.dart';
+import 'package:topkapi_bank/models/transaction/custom_transaction.dart';
 
 part 'fb_db_base.dart';
 
-class FirebaseDbManager extends FirebaseDbBase {
+class FirebaseDbManager extends FirebaseDbBase implements TransactionBase {
   @override
   Future<BankUser?> readUser(String userID) async {
     try {
@@ -91,7 +92,10 @@ class FirebaseDbManager extends FirebaseDbBase {
     try {
       List<PaymentModel?> payments = [];
 
-      final documents = await dbBase.collection("payments").get();
+      final documents = await dbBase
+          .collection("payments")
+          .where('payerId', isEqualTo: userId)
+          .get();
 
       for (var perDoc in documents.docs) {
         final payment = PaymentModel.fromJson(perDoc.data());
@@ -105,6 +109,65 @@ class FirebaseDbManager extends FirebaseDbBase {
     } catch (e) {
       logger.e("Payment Failed: ${e.toString()}");
       return [];
+    }
+  }
+
+  @override
+  Future<bool> anyHasUserWithThisIban(String iban) async {
+    try {
+      final documents =
+          await dbBase.collection("users").where('iban', isEqualTo: iban).get();
+      return documents.docs.isNotEmpty;
+    } catch (e) {
+      logger.e(e.toString());
+      return false;
+    }
+  }
+
+  @override
+  Future<BankUser?> getBankUserWithIban(String iban) async {
+    try {
+      final document =
+          await dbBase.collection("users").where('iban', isEqualTo: iban).get();
+      final bankUser = document.docs.isNotEmpty
+          ? BankUser.fromJson(document.docs.first.data())
+          : null;
+      return bankUser;
+    } catch (e) {
+      logger.e(e.toString());
+      return null;
+    }
+  }
+
+  @override
+  Future<bool?> doTransaction(
+    CustomTransaction transaction,
+  ) async {
+    try {
+      logger.i(transaction.amount!.toString());
+      logger.i(transaction.senderId!.toString());
+      logger.i(transaction.receiverId!.toString());
+      final futureList = <Future>[
+        dbBase
+            .collection("transactions")
+            .doc(transaction.transactionId)
+            .set(transaction.toJson()),
+        dbBase
+            .collection('users')
+            .doc(transaction.senderId)
+            .update({"balance": FieldValue.increment(-transaction.amount!)}),
+        dbBase
+            .collection('users')
+            .doc(transaction.receiverId)
+            .update({"balance": FieldValue.increment(transaction.amount!)})
+      ];
+
+      await Future.wait(futureList);
+
+      return true;
+    } catch (e) {
+      logger.e(e.toString());
+      return false;
     }
   }
 }

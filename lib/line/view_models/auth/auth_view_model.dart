@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:topkapi_bank/line/db/auth/auth_manager.dart';
 import 'package:topkapi_bank/line/view_models/app/loading_manager.dart';
@@ -24,8 +23,13 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
           ref, email, password, userName);
 
       if (currentUser != null) {
+
+        state = currentUser;
+
         CustomDialogs.successTitleAndOk(ref, "", "Başarılı",
-            "Kaydınız oluşturuldu. Giriş sağlayabilirsiniz.");
+            "Kaydınız oluşturuldu. Giriş sağlayabilirsiniz.",
+            pressOk: () => NavigationService.instance
+                .navigateToPage(path: NavigationConstants.homePage));
       }
 
       ref.read(currentLoadingManager.notifier).changeState(LoadingStates.idle);

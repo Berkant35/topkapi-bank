@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nanoid/nanoid.dart';
+import 'package:topkapi_bank/line/db/firestore/fb_storage_manager.dart';
 import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/auth/bank_user.dart';
 import 'package:topkapi_bank/utilities/constants/exceptions/firebase_exceptions.dart';
@@ -15,6 +16,7 @@ part 'auth_service.dart';
 
 abstract class AuthManager {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final _storageBase = FirebaseStorageManager();
   final dbbManager = FirebaseDbManager();
 
   Future<BankUser?> createUserWithEmailAndPassword(

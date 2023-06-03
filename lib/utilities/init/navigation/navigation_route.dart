@@ -8,6 +8,7 @@ import 'package:topkapi_bank/ui/payments_page.dart';
 import '../../../ui/help/not_found.dart';
 import '../../../ui/home/payments/pay_bill_page.dart';
 import '../../../ui/home/transfers/transfer_money.dart';
+import '../../../ui/navigation_page.dart';
 import 'navigation_constants.dart';
 
 class NavigationRoute {
@@ -22,7 +23,7 @@ class NavigationRoute {
       case NavigationConstants.baseAuthPage:
         return normalNavigate(const BaseAuth());
       case NavigationConstants.homePage:
-        return normalNavigate(const HomePage());
+        return normalNavigate(const CustomNavigationBarX());
       case NavigationConstants.payBillPage:
         return normalNavigate(const PayBillPage());
       case NavigationConstants.addCreditCardPage:

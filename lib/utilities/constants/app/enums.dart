@@ -1,7 +1,7 @@
 
 
 
-enum Roles {none,admin,accountant,customer,expert,doctor,worker}
+
 enum LoadingStates {idle,loading,loaded}
 
 enum Months {

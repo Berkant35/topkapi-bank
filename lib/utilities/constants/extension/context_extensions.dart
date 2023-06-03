@@ -139,14 +139,14 @@ extension ThemeValueExtension on BuildContext {
       overflow: TextOverflow.ellipsis);
 
   static TextStyle get subtitle => TextStyle(
-      fontSize: 16.sp,
+      fontSize: 19.sp,
       fontWeight: FontWeight.w500,
       letterSpacing: 0.15.sp,
       fontFamily: ApplicationConstants.customFontFamily,
       overflow: TextOverflow.ellipsis);
 
   static TextStyle get subtitle2 => TextStyle(
-      fontSize: 14.sp,
+      fontSize: 17.sp,
       fontWeight: FontWeight.w700,
       letterSpacing: 0.1.sp,
       fontFamily: ApplicationConstants.customFontFamily,

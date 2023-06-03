@@ -58,95 +58,97 @@ class _AddCreditCardFormState extends ConsumerState<AddCreditCardForm> {
       key: addCreditCardFormKey,
       child: Padding(
         padding: EdgeInsets.all(4.w),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 2.h,
-            ),
-            RowFormField(
-                headerName: 'Kartı Kullanacak Kişinin Adı*',
-                inputType: TextInputType.number,
-                editingController:
-                    ComplexInherited.of(context).creditCardHolderNameController,
-                custValidateFunction: (val) => val != null && val.isNotEmpty
-                    ? null
-                    : "Bu alan boş bırakılamaz"),
-            SizedBox(
-              height: 8.h,
-            ),
-            CustomElevatedButton(
-              onPressed:
-                  ref.watch(currentLoadingManager) != LoadingStates.loading
-                      ? () {
-                          addCreditCardFormKey.currentState!.save();
-                          if (addCreditCardFormKey.currentState!.validate()) {
-                            createRandomCard();
-                          }
-                        }
-                      : null,
-              inButtonText: 'Kredi Kartını Oluştur',
-              primaryColor: CustomColors.primaryColor,
-              inButtonTextStyle:
-                  ThemeValueExtension.subtitle.copyWith(color: Colors.white),
-              outBorder: const StadiumBorder(
-                side:
-                    BorderSide(width: 3.0, color: CustomColors.customGreyColor),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 2.h,
               ),
-            ),
-            SizedBox(
-              height: 4.h,
-            ),
-            createdCard != null
-                ? SizedBox(
-                    width: 100.w,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Oluşturulan Kart",
-                          style: ThemeValueExtension.subtitle,
-                        ),
-                        SizedBox(
-                          height: 2.h,
-                        ),
-                        CreditCardUi(
-                          cardHolderFullName:
-                              createdCard!.creditCardHolderName!,
-                          cardNumber: createdCard!.cardNumber!,
-                          validThru: createdCard!.validateDate!,
-                        ),
-                      ],
-                    ),
-                  )
-                : const SizedBox(),
-            SizedBox(
-              height: 4.h,
-            ),
-            createdCard != null
-                ? ref.watch(currentLoadingManager) != LoadingStates.loading
-                    ? CustomElevatedButton(
-                        onPressed: ref.watch(currentLoadingManager) !=
-                                LoadingStates.loading
-                            ? () {
-                                ref
-                                    .read(currentCreditCardWorks.notifier)
-                                    .add(ref, createdCard!);
-                              }
-                            : null,
-                        inButtonText: 'Kartı Kaydet',
-                        primaryColor: CustomColors.cardColorTypeThree,
-                        inButtonTextStyle: ThemeValueExtension.subtitle
-                            .copyWith(color: Colors.white),
-                        outBorder: const StadiumBorder(
-                          side: BorderSide(
-                              width: 3.0, color: CustomColors.customGreyColor),
-                        ),
-                      )
-                    : const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      )
-                : const SizedBox(),
-          ],
+              RowFormField(
+                  headerName: 'Kartı Kullanacak Kişinin Adı*',
+                  inputType: TextInputType.text,
+                  editingController:
+                      ComplexInherited.of(context).creditCardHolderNameController,
+                  custValidateFunction: (val) => val != null && val.isNotEmpty
+                      ? null
+                      : "Bu alan boş bırakılamaz"),
+              SizedBox(
+                height: 8.h,
+              ),
+              CustomElevatedButton(
+                onPressed:
+                    ref.watch(currentLoadingManager) != LoadingStates.loading
+                        ? () {
+                            addCreditCardFormKey.currentState!.save();
+                            if (addCreditCardFormKey.currentState!.validate()) {
+                              createRandomCard();
+                            }
+                          }
+                        : null,
+                inButtonText: 'Kredi Kartını Oluştur',
+                primaryColor: CustomColors.primaryColor,
+                inButtonTextStyle:
+                    ThemeValueExtension.subtitle.copyWith(color: Colors.white),
+                outBorder: const StadiumBorder(
+                  side:
+                      BorderSide(width: 3.0, color: CustomColors.customGreyColor),
+                ),
+              ),
+              SizedBox(
+                height: 4.h,
+              ),
+              createdCard != null
+                  ? SizedBox(
+                      width: 100.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Oluşturulan Kart",
+                            style: ThemeValueExtension.subtitle,
+                          ),
+                          SizedBox(
+                            height: 2.h,
+                          ),
+                          CreditCardUi(
+                            cardHolderFullName:
+                                createdCard!.creditCardHolderName!,
+                            cardNumber: createdCard!.cardNumber!,
+                            validThru: createdCard!.validateDate!,
+                          ),
+                        ],
+                      ),
+                    )
+                  : const SizedBox(),
+              SizedBox(
+                height: 4.h,
+              ),
+              createdCard != null
+                  ? ref.watch(currentLoadingManager) != LoadingStates.loading
+                      ? CustomElevatedButton(
+                          onPressed: ref.watch(currentLoadingManager) !=
+                                  LoadingStates.loading
+                              ? () {
+                                  ref
+                                      .read(currentCreditCardWorks.notifier)
+                                      .add(ref, createdCard!);
+                                }
+                              : null,
+                          inButtonText: 'Kartı Kaydet',
+                          primaryColor: CustomColors.cardColorTypeThree,
+                          inButtonTextStyle: ThemeValueExtension.subtitle
+                              .copyWith(color: Colors.white),
+                          outBorder: const StadiumBorder(
+                            side: BorderSide(
+                                width: 3.0, color: CustomColors.customGreyColor),
+                          ),
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator.adaptive(),
+                        )
+                  : const SizedBox(),
+            ],
+          ),
         ),
       ),
     );
@@ -166,7 +168,7 @@ class _AddCreditCardFormState extends ConsumerState<AddCreditCardForm> {
         cardNumber: customCardNumber,
         creditCardHolderName:
             ComplexInherited.of(context).creditCardHolderNameController.text,
-        createdAt: FieldValue.serverTimestamp().toString(),
+        createdAt: DateTime.now().toLocal().toString(),
         creditCardId: creditCardId,
         csv: csv,
         validateDate: formattedDate,

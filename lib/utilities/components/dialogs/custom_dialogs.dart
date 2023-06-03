@@ -23,32 +23,47 @@ class CustomDialogs {
     deleteAwesomeDialog.show();
   }
 
-  static void successTitleAndOk(WidgetRef ref, String rootUserID, String title,
-      String desc,) {
+  static void successTitleAndOk(
+      WidgetRef ref, String rootUserID, String title, String desc,
+      {Function? pressOk}) {
     final deleteAwesomeDialog = AwesomeDialog(
         context: ref.context,
         dialogType: DialogType.success,
         title: title,
         desc: desc,
-        btnOkText: "Tamam");
+        btnOkText: "Tamam",
+        btnOkOnPress: pressOk != null ? () => pressOk : null);
 
     deleteAwesomeDialog.show();
   }
 
+  static void failed(WidgetRef ref, String title, String desc,
+      {Function? pressOk}) {
+    final deleteAwesomeDialog = AwesomeDialog(
+        context: ref.context,
+        dialogType: DialogType.error,
+        title: title,
+        desc: desc,
+        btnOkText: "Tamam",
+        btnOkOnPress: pressOk != null ? () => pressOk : null);
 
-  static void areYouSureToExitApp(WidgetRef ref, String title,
-      String desc,) {
+    deleteAwesomeDialog.show();
+  }
+
+  static void areYouSureToExitApp(
+    WidgetRef ref,
+    String title,
+    String desc,
+  ) {
     final deleteAwesomeDialog = AwesomeDialog(
         context: ref.context,
         dialogType: DialogType.warning,
         title: title,
         desc: desc,
-
         btnOkText: "Evet",
         btnCancelText: "Vazgeç",
-        btnOkOnPress: ()=>ref.read(currentBankUser.notifier).signOut(ref),
-        btnCancelOnPress: (){}
-    );
+        btnOkOnPress: () => ref.read(currentBankUser.notifier).signOut(ref),
+        btnCancelOnPress: () {});
 
     deleteAwesomeDialog.show();
   }

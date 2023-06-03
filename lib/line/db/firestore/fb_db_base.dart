@@ -15,4 +15,15 @@ abstract class FirebaseDbBase {
 
   Future<bool> billPayment(String userId,PaymentModel? paymentModel);
 
+  Future<bool> anyHasUserWithThisIban(String iban);
+
+  Future<BankUser?> getBankUserWithIban(String iban);
+
+
+}
+
+abstract class TransactionBase {
+
+  Future<bool?> doTransaction(CustomTransaction transaction);
+
 }

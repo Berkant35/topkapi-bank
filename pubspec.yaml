@@ -39,11 +39,10 @@ dependencies:
 
   #qr_flutter:
   qr_flutter: ^4.1.0
+  qr_code_scanner: ^1.0.1
 
   #date
   date_time_picker: ^2.1.0
-
-
 
   #path
   path_provider: ^2.0.15
@@ -80,6 +79,8 @@ dependencies:
   #Push Notification
   flutter_local_notifications: ^14.0.0+2
   firebase_messaging: ^14.6.1
+
+
 
   #local_db
   hive: ^2.2.3

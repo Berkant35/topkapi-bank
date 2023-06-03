@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:topkapi_bank/line/view_models/global_providers.dart';
+import 'package:topkapi_bank/ui/auth/customs/complex_inherited.dart';
 import 'package:topkapi_bank/ui/home/transfers/helper_of_transfer_widgets/iban.dart';
 import 'package:topkapi_bank/ui/home/transfers/helper_of_transfer_widgets/qr.dart';
-import 'package:topkapi_bank/utilities/constants/extension/widget_extension.dart';
 
 import '../../../utilities/constants/extension/context_extensions.dart';
 import '../../../utilities/init/theme/custom_colors.dart';
@@ -44,8 +44,10 @@ class _TransferMoneyState extends ConsumerState<TransferMoney>
     return Scaffold(
       appBar: buildAppBar(context),
       resizeToAvoidBottomInset: false,
-      body: TabBarView(
-          controller: tabController, children: const [IbanPage(), QrPage()]),
+      body: ComplexInherited(
+        child: TabBarView(
+            controller: tabController, children: const [IbanPage(), QrPage()]),
+      ),
     );
   }
 
@@ -61,23 +63,25 @@ class _TransferMoneyState extends ConsumerState<TransferMoney>
       centerTitle: false,
       bottom: PreferredSize(
           preferredSize:  Size.fromHeight(2.h),
-          child: SizedBox(
-            child: TabBar(
-              controller: tabController,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorColor: Colors.white,
-              tabs: [
-                Tab(
-                  child: Text(
-                    'IBAN ile Gönder',
-                    style: ThemeValueExtension.subtitle,
+          child: SingleChildScrollView(
+            child: SizedBox(
+              child: TabBar(
+                controller: tabController,
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorColor: Colors.white,
+                tabs: [
+                  Tab(
+                    child: Text(
+                      'IBAN ile Gönder',
+                      style: ThemeValueExtension.subtitle,
+                    ),
                   ),
-                ),
-                Tab(
-                  child: Text('QR ile Gönder',
-                    style: ThemeValueExtension.subtitle,),
-                )
-              ],
+                  Tab(
+                    child: Text('QR ile Gönder',
+                      style: ThemeValueExtension.subtitle,),
+                  )
+                ],
+              ),
             ),
           )),
       systemOverlayStyle: SystemUiOverlayStyle.dark,
