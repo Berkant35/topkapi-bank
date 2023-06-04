@@ -23,7 +23,6 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
           ref, email, password, userName);
 
       if (currentUser != null) {
-
         state = currentUser;
 
         CustomDialogs.successTitleAndOk(ref, "", "Başarılı",
@@ -52,6 +51,16 @@ class CurrentBankUserNotifier extends StateNotifier<BankUser?> {
   Future<void> forgotPassword(String email) {
     // TODO: implement forgotPassword
     throw UnimplementedError();
+  }
+
+  Future<void> updateBalance(int balance) async {
+    try {
+      state = state!.copyWith(balance: state!.balance! + balance.toDouble());
+      return;
+    } catch (e) {
+      logger.e(e.toString());
+      return;
+    }
   }
 
   Future signIn(WidgetRef ref, String email, String password) async {

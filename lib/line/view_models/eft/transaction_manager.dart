@@ -21,6 +21,7 @@ class TransactionManagerNotifier extends StateNotifier<CustomTransaction?> {
     final result = await _dbManager.doTransaction(transaction);
 
     if (result!) {
+      ref.read(currentBankUser.notifier).updateBalance(-transaction.amount!);
       ref
           .read(currentQrSendMoneyState.notifier)
           .changState(QrSendStates.result);

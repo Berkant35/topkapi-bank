@@ -96,6 +96,7 @@ dependencies:
   equatable: ^2.0.5
 
   cupertino_icons: ^1.0.2
+  lottie: ^2.3.2
 
 dev_dependencies:
   flutter_test:
@@ -114,6 +115,7 @@ flutter:
   assets:
 
     - assets/image/
+    - assets/lottie/
 
   fonts:
     - family: Poppins

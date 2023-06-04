@@ -144,9 +144,7 @@ class FirebaseDbManager extends FirebaseDbBase implements TransactionBase {
     CustomTransaction transaction,
   ) async {
     try {
-      logger.i(transaction.amount!.toString());
-      logger.i(transaction.senderId!.toString());
-      logger.i(transaction.receiverId!.toString());
+
       final futureList = <Future>[
         dbBase
             .collection("transactions")
