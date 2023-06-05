@@ -11,3 +11,4 @@ Kullanılan Teknolojiler
 Backend: Node.js, Express.js, MongoDB
 Frontend: React, Redux
 Diğer Teknolojiler: JWT, bcrypt
+ebru gundes asik
