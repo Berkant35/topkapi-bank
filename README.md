@@ -20,10 +20,10 @@ Diğer Teknolojiler: JWT, bcrypt
 
 Kurulum
 ----------------------
-Ayarlar sayfasına girin.
+Telefonunuzdan Ayarlar sayfasına girin.
 Güvenlik bölümünü açın.
 "Bilinmeyen Kaynaklara İzin Ver" seçeneğini seçin.
-APK dosyasını indirin.
+Özel olarak vermiş olduğumuz APK dosyasını indirin.
 APK dosyasının üzerine dokunun.
 Kurulum sürecini başlatın.
 
