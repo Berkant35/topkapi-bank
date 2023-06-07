@@ -4,42 +4,42 @@ Topkapı Bank için bir bankacılık uygulamasıdır. Bu uygulama ile müşteril
 
 Özellikler
 ----------------------
-Kullanıcılar, hesaplarını görüntüleyebilir, para yatırabilir ve çekebilirler.
-Kullanıcılar, diğer Topkapı Bank müşterilerine para transferi yapabilirler.
-Kullanıcılar, fatura ödemelerini uygulama üzerinden gerçekleştirebilirler.
-Kullanıcılar, hesap hareketlerini görüntüleyebilirler.
-Uygulama, güvenli bir şekilde kullanıcı bilgilerini saklar.
+Kullanıcılar, hesaplarını görüntüleyebilir, para yatırabilir ve çekebilirler. <br>
+Kullanıcılar, diğer Topkapı Bank müşterilerine para transferi yapabilirler. <br>
+Kullanıcılar, fatura ödemelerini uygulama üzerinden gerçekleştirebilirler. <br>
+Kullanıcılar, hesap hareketlerini görüntüleyebilirler. <br>
+Uygulama, güvenli bir şekilde kullanıcı bilgilerini saklar. <br>
 Kullanıcılar, QR kod seçeneği ile transfer yapabilirler.
 
 Kullanılan Teknolojiler
 ----------------------
-Tasarım ve Prototip: Figma
-Backend: Node.js, Express.js, MongoDB
-Frontend: React, Redux
-Diğer Teknolojiler: JWT, bcrypt
+Tasarım ve Prototip: Figma <br> 
+Backend: Node.js, Express.js, MongoDB <br>
+Frontend: React, Redux <br>
+Diğer Teknolojiler: JWT, bcrypt 
 
 Kurulum
 ----------------------
-Telefonunuzdan Ayarlar sayfasına girin.
-Güvenlik bölümünü açın.
-"Bilinmeyen Kaynaklara İzin Ver" seçeneğini seçin.
-Özel olarak vermiş olduğumuz APK dosyasını indirin.
-APK dosyasının üzerine dokunun.
+Telefonunuzdan Ayarlar sayfasına girin. <br>
+Güvenlik bölümünü açın. <br>
+"Bilinmeyen Kaynaklara İzin Ver" seçeneğini seçin. <br>
+Özel olarak vermiş olduğumuz APK dosyasını indirin. <br>
+APK dosyasının üzerine dokunun. <br>
 Kurulum sürecini başlatın.
 
 Projeye eklenmek istenenler
 ----------------------
-Yatırım bölümü
-Döviz bölümü
-Akıllı planlamalar
-Farklı Dil seçenekleri
-Bağış yapma seçenekleri
+Yatırım bölümü <br>
+Döviz bölümü <br>
+Akıllı planlamalar <br>
+Farklı Dil seçenekleri <br>
+Bağış yapma seçenekleri 
 
 Projeyi Geliştirenler
 ----------------------
-Berkant Çalıkuşu
-Mücahit Şen
-Muhammet Emin Hamşıoğlu
+Berkant Çalıkuşu <br>
+Mücahit Şen <br> 
+Muhammet Emin Hamşıoğlu <br>
 Furkan Çalışkan
 
 
