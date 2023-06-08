@@ -1,5 +1,9 @@
-Topkapı Bank
-----------------------
+<div align="center">
+  <img src="https://github.com/Berkant35/topkapi-bank/assets/118449859/1ab2b795-0362-46ca-8d8d-69d52f281645" width="1200"> <br>
+  <h1>Topkapı Bank </h1>
+</div>
+
+
 Topkapı Bank için bir bankacılık uygulamasıdır. Bu uygulama ile müşteriler, banka hesaplarını yönetebilir, para transferleri yapabilir ve fatura ödemelerini gerçekleştirebilirler.
 
 <h2>Uygulama Görünümü</h2>
