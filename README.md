@@ -14,9 +14,9 @@ Kullanıcılar, QR kod seçeneği ile transfer yapabilirler.
 Kullanılan Teknolojiler
 ----------------------
 Tasarım ve Prototip: Figma <br> 
-Backend: Node.js, Express.js, MongoDB <br>
-Frontend: React, Redux <br>
-Diğer Teknolojiler: JWT, bcrypt 
+Backend: Firebase <br>
+Mobil App: Flutter <br>
+
 
 Kurulum
 ----------------------
