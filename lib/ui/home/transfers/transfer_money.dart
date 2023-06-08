@@ -72,12 +72,12 @@ class _TransferMoneyState extends ConsumerState<TransferMoney>
                 tabs: [
                   Tab(
                     child: Text(
-                      'IBAN ile Gönder',
+                      'IBAN',
                       style: ThemeValueExtension.subtitle,
                     ),
                   ),
                   Tab(
-                    child: Text('QR ile Gönder',
+                    child: Text('QR',
                       style: ThemeValueExtension.subtitle,),
                   )
                 ],

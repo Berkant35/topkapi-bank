@@ -30,7 +30,7 @@ class _ResultOfQrContentState extends ConsumerState<ResultOfQrContent> {
       children: [
         Lottie.asset(Assets.successLottie, repeat: false),
         Text(
-          "İşleminiz Başarılı Bir Şekilde Gerçekleştirildi",
+          "İşleminiz Başarılı Bir Şekilde\n Gerçekleştirildi",
           textAlign: TextAlign.center,
           style: ThemeValueExtension.subtitle
               .copyWith(color: CustomColors.primaryColor),

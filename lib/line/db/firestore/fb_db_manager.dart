@@ -116,7 +116,7 @@ class FirebaseDbManager extends FirebaseDbBase implements TransactionBase {
   Future<bool> anyHasUserWithThisIban(String iban) async {
     try {
       final documents =
-          await dbBase.collection("users").where('iban', isEqualTo: iban).get();
+          await dbBase.collection("users").where('iban', isEqualTo: iban.contains("TR") ? iban : 'TR$iban').get();
       return documents.docs.isNotEmpty;
     } catch (e) {
       logger.e(e.toString());

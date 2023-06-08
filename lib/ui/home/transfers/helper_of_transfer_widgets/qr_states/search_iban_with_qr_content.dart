@@ -48,7 +48,7 @@ class _SearchIbanWithQrContainerState
             .read(currentQrSendMoneyState.notifier)
             .checkAnyHasUser('TR${scanData.code!}');
         if (checkAnyUserWithThisIban) {
-          await ref.read(currentQrSendMoneyState.notifier).getAndSetBankUser();
+          await ref.read(currentQrSendMoneyState.notifier).getAndSetBankUser(ref);
           ref
               .read(currentQrSendMoneyState.notifier)
               .changState(QrSendStates.send);

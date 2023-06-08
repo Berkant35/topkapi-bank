@@ -34,6 +34,8 @@ class ComplexInherited extends InheritedWidget{
 
 
 
+
+
   static ComplexInherited of(BuildContext context) {
 
     final ComplexInherited? result = context.dependOnInheritedWidgetOfExactType<ComplexInherited>();
