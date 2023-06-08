@@ -9,6 +9,8 @@ import 'package:topkapi_bank/line/db/firestore/fb_storage_base.dart';
 import '../../../main.dart';
 
 class FirebaseStorageManager extends StorageFirebaseBase {
+
+
   @override
   Future<String?> createQRLink(String iban) async {
     try {

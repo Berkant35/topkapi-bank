@@ -1,9 +1,3 @@
-
-
-
-
-
-
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -21,6 +15,7 @@ abstract class StorageFirebaseBase{
     final directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
+
 
   Future<File> saveFile(ByteData data, String name,String type);
 
