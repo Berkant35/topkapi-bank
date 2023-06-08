@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -67,8 +66,8 @@ class _AddCreditCardFormState extends ConsumerState<AddCreditCardForm> {
               RowFormField(
                   headerName: 'Kartı Kullanacak Kişinin Adı*',
                   inputType: TextInputType.text,
-                  editingController:
-                      ComplexInherited.of(context).creditCardHolderNameController,
+                  editingController: ComplexInherited.of(context)
+                      .creditCardHolderNameController,
                   custValidateFunction: (val) => val != null && val.isNotEmpty
                       ? null
                       : "Bu alan boş bırakılamaz"),
@@ -90,8 +89,8 @@ class _AddCreditCardFormState extends ConsumerState<AddCreditCardForm> {
                 inButtonTextStyle:
                     ThemeValueExtension.subtitle.copyWith(color: Colors.white),
                 outBorder: const StadiumBorder(
-                  side:
-                      BorderSide(width: 3.0, color: CustomColors.customGreyColor),
+                  side: BorderSide(
+                      width: 3.0, color: CustomColors.customGreyColor),
                 ),
               ),
               SizedBox(
@@ -140,7 +139,8 @@ class _AddCreditCardFormState extends ConsumerState<AddCreditCardForm> {
                               .copyWith(color: Colors.white),
                           outBorder: const StadiumBorder(
                             side: BorderSide(
-                                width: 3.0, color: CustomColors.customGreyColor),
+                                width: 3.0,
+                                color: CustomColors.customGreyColor),
                           ),
                         )
                       : const Center(

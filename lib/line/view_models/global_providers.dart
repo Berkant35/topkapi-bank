@@ -28,7 +28,7 @@ final currentBaseAuth =
 });
 
 final currentQrSendMoneyState =
-StateNotifierProvider<QrSendStatesControlNotifier, QrSendStates>((ref) {
+    StateNotifierProvider<QrSendStatesControlNotifier, QrSendStates>((ref) {
   return QrSendStatesControlNotifier(QrSendStates.search);
 });
 
@@ -38,17 +38,16 @@ final currentPaymentWorks =
 });
 //CreditCardManagerNotifier
 final currentCreditCardWorks =
-StateNotifierProvider<CreditCardManagerNotifier, bool>((ref) {
+    StateNotifierProvider<CreditCardManagerNotifier, bool>((ref) {
   return CreditCardManagerNotifier(false);
 });
 
 final currentSendMoneyTabManagerIndex =
-StateNotifierProvider<TabManagerIndexControlNotifier, int>((ref) {
+    StateNotifierProvider<TabManagerIndexControlNotifier, int>((ref) {
   return TabManagerIndexControlNotifier(0);
 });
 
-
 final currentCustomTransactionManager =
-StateNotifierProvider<TransactionManagerNotifier, void>((ref) {
+    StateNotifierProvider<TransactionManagerNotifier, void>((ref) {
   return TransactionManagerNotifier(null);
 });

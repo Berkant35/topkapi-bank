@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nanoid/nanoid.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:topkapi_bank/main.dart';
 import 'package:topkapi_bank/models/payment_model.dart';
 import 'package:topkapi_bank/utilities/components/custom_elevated_button.dart';
 import 'package:topkapi_bank/utilities/constants/extension/context_extensions.dart';

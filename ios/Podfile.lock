@@ -804,7 +804,7 @@ DEPENDENCIES:
   - flutter_app_badger (from `.symlinks/plugins/flutter_app_badger/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
   - search_choices (from `.symlinks/plugins/search_choices/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
@@ -856,7 +856,7 @@ EXTERNAL SOURCES:
   package_info_plus:
     :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/ios"
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   qr_code_scanner:
     :path: ".symlinks/plugins/qr_code_scanner/ios"
   search_choices:

@@ -1,6 +1,3 @@
-
-
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 part 'bank_user.freezed.dart';
@@ -19,7 +16,7 @@ class BankUser with _$BankUser {
     @JsonKey(name: 'pushToken') String? pushToken,
     @JsonKey(name: 'bankAccountNumber') String? bankAccountNumber,
     @JsonKey(name: 'qrLink') String? qrLink,
-    @JsonKey(name: 'balance',defaultValue: 0.0) double? balance,
+    @JsonKey(name: 'balance', defaultValue: 0.0) double? balance,
     @JsonKey(name: 'createdAt') String? createdAt,
     @JsonKey(name: 'updatedAt') String? updatedAt,
   }) = _BankUser;

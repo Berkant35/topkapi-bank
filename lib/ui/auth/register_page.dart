@@ -7,7 +7,6 @@ import 'package:topkapi_bank/line/view_models/auth/base_auth_control.dart';
 import 'package:topkapi_bank/line/view_models/global_providers.dart';
 
 import 'package:topkapi_bank/ui/auth/customs/complex_inherited.dart';
-import 'package:topkapi_bank/utilities/components/back_type_1.dart';
 import 'package:topkapi_bank/utilities/components/custom_elevated_button.dart';
 import 'package:topkapi_bank/utilities/components/row_form_field.dart';
 import 'package:topkapi_bank/utilities/constants/extension/context_extensions.dart';

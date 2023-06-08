@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:topkapi_bank/ui/auth/register_page.dart';
 import 'package:topkapi_bank/ui/home/home_page.dart';
+import 'package:topkapi_bank/ui/home/profile_page.dart';
 import 'package:topkapi_bank/ui/payments_page.dart';
 
 import '../utilities/constants/app/application_constants.dart';
@@ -41,16 +41,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBarX> {
             label: MenuStrings.payments,
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.menu),
-            icon: Icon(Icons.menu_outlined),
-            label: MenuStrings.menu,
+            selectedIcon: Icon(Icons.person),
+            icon: Icon(Icons.person_outlined),
+            label: MenuStrings.profile,
           ),
         ],
       ),
       body: [
         const HomePage(),
         const PaymentsPage(),
-        const SizedBox()
+        const ProfilePage()
       ][selectedPageIndex],
     );
   }

@@ -18,4 +18,5 @@ class MenuStrings {
   static const mainPage = "Anasayfa";
   static const payments = "Ödemeler";
   static const menu = "Menü";
+  static const profile= "Profil";
 }
